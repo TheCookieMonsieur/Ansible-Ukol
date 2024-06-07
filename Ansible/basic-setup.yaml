@@ -5,8 +5,8 @@
   tasks:
     - name: Create a user
       user:
-        name: newuser
-        password: "{{ newuser | password_hash('sha512') }}"
+        name: johndoe
+        password: "{{ 'SecureP@ssw0rd' | password_hash('sha512') }}"
         state: present
 
     - name: Ensure SSH service is running
@@ -17,8 +17,8 @@
 
     - name: Add SSH key for the new user
       authorized_key:
-        user: newuser
-        key: "{{ lookup('file', /root/.ssh/id_rsa.pub) }}"
+        user: johndoe
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
         state: present
 
     - name: Install essential packages

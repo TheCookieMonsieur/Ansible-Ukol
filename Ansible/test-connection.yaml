@@ -1,6 +1,6 @@
 ---
 - name: Test connection to managed systems
-  hosts: 
+  hosts: myservers 
   tasks:
     - name: Ping the managed nodes
       ping:
